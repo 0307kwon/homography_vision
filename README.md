@@ -13,8 +13,8 @@
 image_in1 : zed_mini의 image_rect_color영상을 사진으로 저장하여 불러옴
 image_in2 : zed_mini의 /zedm/zed_node/rgb/image_rect_color 토픽에서 실시간으로 불러옴
 
-1. homography_vision/src/main.cpp 를 수정해야합니다.
-  1-1 
+### 1. homography_vision/src/main.cpp 를 수정해야합니다.
+  #### 1-1. 
   ``` cpp
     image_in1 = imread("home/kwon/catkin_ws/image/image.png",IMREAD_COLOR);
   ```
