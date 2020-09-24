@@ -18,3 +18,7 @@ image_in2 : zed_mini의 /zedm/zed_node/rgb/image_rect_color 토픽에서 실시�
   ``` cpp
     image_in1 = imread("home/kwon/catkin_ws/image/image.png",IMREAD_COLOR);
   ```
+  \n => 수정 \n
+  ``` cpp
+    image_in1 = imread("원하는 이미지가 있는 path",IMREAD_COLOR);
+  ```
