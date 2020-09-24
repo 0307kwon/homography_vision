@@ -8,7 +8,7 @@
 
 <img src="./image/image0.png" width="50%"></img>
 
-## 2.how to use
+## 2.how to use (zed_mini 사용 시)
 현재 구조는 zed_mini 한 대로 2대의 역할을 하도록 되어있습니다. 
 
 image_in1 : zed_mini의 image_rect_color영상을 사진으로 저장하여 불러옴
@@ -27,10 +27,15 @@ image_in2 : zed_mini의 /zedm/zed_node/rgb/image_rect_color 토픽에서 실시�
   ``` cpp
     image_in1 = imread("원하는 이미지가 있는 path",IMREAD_COLOR);
   ```
-  #### 1-3. ( 현재 imu데이터와 이미지는 zed_mini에서 받아오는 것으로 되어있음 )
-  83,84번째 줄 수정 
+  #### + zed_mini를 쓰지 않을 시
+  83,84번째 줄 수정( 현재 imu데이터와 이미지는 zed_mini에서 받아오는 것으로 되어있음 ) 
   ``` cpp
   message_filters::Subscriber<sensor_msgs::Image> image2_sub(nh,"이미지 토픽",10);
   message_filters::Subscriber<sensor_msgs::Imu> rpy2_sub(nh,"imu 토픽",10);
   ```
   => zed_mini를 쓰지 않을 시 다른 메세지를 subscribe 하도록 수정.
+  
+### 2. roslaunch zed_wrapper zedm.launch
+  => zed_mini를 실행합니다. 
+### 3. rosrun homography_vision homography_vision
+  => 본 패키지 실행
