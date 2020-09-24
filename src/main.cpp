@@ -21,10 +21,14 @@ homography matrix를 이용한 상대 위치 출력 프로그램입니다.
 using namespace cv;
 using namespace std;
 
-#define PI 3.1415926535897
-
 
 double standard_roll,standard_pitch;
+
+Mat image_bird1;
+
+Mat K; // intrinsic parameter
+
+double altitude = 0.71; // zed_mini의 높이를 설정해주세요 (m 단위) -> homography의 scale추정에 쓰입니다.
 
 
 struct Quaternion {
@@ -45,11 +49,6 @@ void image2_cb(const sensor_msgs::Image::ConstPtr& image,const sensor_msgs::Imu:
 
 int findRelativePose(Mat& in1, Mat& in2, Mat K);
 
-Mat image_bird1;
-
-Mat K; // intrinsic parameter
-
-double altitude = 0.71; // zed_mini의 높이를 설정해주세요 (m 단위) -> homography의 scale추정에 쓰입니다.
 
 int main(int argc, char** argv){
     //현재 image_in2을 기준으로 homography를 구해 position과 orientation을 구합니다!//
@@ -58,8 +57,11 @@ int main(int argc, char** argv){
     //image_in1 : 정적이미지
     //image_in2 : zed_mini로부터 실시간으로 들어오는 영상
 
+    getMyPackagePath();
+
+
     Mat image_in1;
-    image_in1 = imread("/home/kwon/catkin_ws/image/image.png",IMREAD_COLOR);
+    image_in1 = imread("home/kwon/catkin_ws/image/image.png",IMREAD_COLOR);
 
     //intrinsic parameter 계산 //
     float f = 100, w = image_in1.size().width, h = image_in1.size().height;
@@ -202,8 +204,6 @@ Mat rpToHomography(float roll, float pitch, Mat K){ // angular 값을 받음
 
 int findRelativePose(Mat& in1, Mat& in2, Mat K){
   //특징점 매칭//
-
-
   vector<KeyPoint> keypoints_1,keypoints_2;
   Mat descriptors_1, descriptors_2;
   Ptr<ORB>orbF = ORB::create(1000);
