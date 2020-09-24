@@ -41,7 +41,7 @@ image_in2 : zed_mini의 /zedm/zed_node/rgb/image_rect_color 토픽에서 실시�
   => 본 패키지 실행
 
 ## 3. 실행 결과
-<img src="중간 위치 - 성공(이동전).png" width="50%"></img>
-<img src="중간 위치 - 성공(이동후).png" width="50%"></img>
-<img src="낮은 위치 - 성공(이동전).png" width="50%"></img>
-<img src="낮은 위치 - 성공(이동후).png" width="50%"></img>
+<img src="./image/중간 위치 - 성공(이동전).png" width="35%"></img>
+<img src="./image/중간 위치 - 성공(이동후).png" width="35%"></img>
+<img src="./image/낮은 위치 - 성공(이동전).png" width="35%"></img>
+<img src="./image/낮은 위치 - 성공(이동후).png" width="35%"></img>
