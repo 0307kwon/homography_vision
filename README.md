@@ -10,8 +10,11 @@
 
 ## 2.how to use
 현재 구조는 zed_mini 한 대로 2대의 역할을 하도록 되어있습니다. 
+
 image_in1 : zed_mini의 image_rect_color영상을 사진으로 저장하여 불러옴
+
 image_in2 : zed_mini의 /zedm/zed_node/rgb/image_rect_color 토픽에서 실시간으로 불러옴
+
 
 ### 1. homography_vision/src/main.cpp 를 수정해야합니다.
   #### 1-1.
