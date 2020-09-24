@@ -14,11 +14,20 @@ image_in1 : zed_mini의 image_rect_color영상을 사진으로 저장하여 불�
 image_in2 : zed_mini의 /zedm/zed_node/rgb/image_rect_color 토픽에서 실시간으로 불러옴
 
 ### 1. homography_vision/src/main.cpp 를 수정해야합니다.
-  #### 1-1. 
+  #### 1-1.
+  31번째 줄 수정
   ``` cpp
-    image_in1 = imread("home/kwon/catkin_ws/image/image.png",IMREAD_COLOR);
+  double altitude = (제드의 높이를 m단위로);
   ```
-  \n => 수정 \n
+  #### 1-2.
+  64번째 줄 수정
   ``` cpp
     image_in1 = imread("원하는 이미지가 있는 path",IMREAD_COLOR);
   ```
+  #### 1-3. ( 현재 imu데이터와 이미지는 zed_mini에서 받아오는 것으로 되어있음 )
+  83,84번째 줄 수정 
+  ``` cpp
+  message_filters::Subscriber<sensor_msgs::Image> image2_sub(nh,"/zedm/zed_node/rgb/image_rect_color",10);
+  message_filters::Subscriber<sensor_msgs::Imu> rpy2_sub(nh,"/zedm/zed_node/imu/data",10);
+  ```
+  => zed_mini를 쓰지 않을 시 다른 메세지를 subscribe 하도록 수정.
